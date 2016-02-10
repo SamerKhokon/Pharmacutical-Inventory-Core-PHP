@@ -1,0 +1,20 @@
+SELECT 
+	a.`product_order_id`,
+	a.customer_id,
+	(SELECT customer_name FROM `inv_customer_info` WHERE customer_id=a.customer_id) AS customer_name, 
+	customer_code,
+	a.delivery_date,
+	a.order_taken_by, 
+	(SELECT emp_name FROM `hr_employee_info` WHERE employee_id=a.order_taken_by) AS emp_name,
+	a.order_taker_code,
+	(SELECT product_name FROM product_info WHERE product_id=b.product_id) AS product_name, 
+	b.product_code,
+	b.product_pack_size, 
+	b.product_unit,
+	b.order_quantity 
+FROM 
+	product_order_info AS a, 
+	ordered_product_info AS b 
+WHERE 
+	a.`product_order_id`=1 
+	AND a.company_id=1 

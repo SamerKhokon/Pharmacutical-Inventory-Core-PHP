@@ -1,0 +1,4 @@
+without locale folder 
+kaj korena
+
+html2pdf.class file ta library file
